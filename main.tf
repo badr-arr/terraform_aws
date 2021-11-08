@@ -37,6 +37,7 @@ resource "aws_instance" "ec2_instance" {
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ubuntu.id]
   iam_instance_profile = "${aws_iam_instance_profile.tf_instance_profile.id}"
+  user_data = file("./scripts/run_docker.sh")
 
   tags = {
     Name = "EC2Instance"
